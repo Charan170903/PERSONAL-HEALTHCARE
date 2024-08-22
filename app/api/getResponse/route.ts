@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI("AIzaSyDiAENVNcgFGHVLAwzayKlF0TgbqWyTeSo");
+const genAI = new GoogleGenerativeAI("AIzaSyCoe4Qobhrm5QyCquCx1FfswrW-R_YITE4");
 
 export async function POST(request: Request) {
   const data = await request.json();
