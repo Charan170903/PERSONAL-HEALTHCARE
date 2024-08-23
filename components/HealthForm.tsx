@@ -242,7 +242,7 @@ const HealthForm = () => {
               {response && (
                 <div>
                   <h2 className="text-2xl font-bold">Your BMI</h2>
-                  <p className="font-medium">{bmi?.toFixed(2)}</p>
+                  <p className="font-medium">{Number(bmi) > 31 && Number(bmi) < 16  ? bmi?.toFixed(2) : "Your Height and Weight Seems Unusual, Check and enter properly"}</p>
                 </div>
               )}
               <Button>Check Health Condition</Button>
