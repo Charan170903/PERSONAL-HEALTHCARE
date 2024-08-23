@@ -58,7 +58,7 @@ const HealthForm = () => {
     console.log(values);
     setLoading(true);
 
-    fetch("http://localhost:3000/api/getResponse", {
+    fetch(`${process.env.NEXT_PUBLIC_HOSTNAME}/api/getResponse`, {
       method: "POST",
       body: JSON.stringify({
         ...values,
