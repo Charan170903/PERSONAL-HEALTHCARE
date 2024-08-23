@@ -121,6 +121,7 @@ const HealthForm = () => {
                   <Input
                     id="height"
                     type="number"
+                    min={0}
                     {...field}
                     placeholder="Enter your height (cm)"
                   />
@@ -139,6 +140,7 @@ const HealthForm = () => {
                   <Input
                     id="height"
                     type="number"
+                    min={0}
                     {...field}
                     placeholder="Enter your weight (kg)"
                   />
@@ -157,6 +159,7 @@ const HealthForm = () => {
                   <Input
                     id="height"
                     type="number"
+                    min={0}
                     {...field}
                     placeholder="Enter your age"
                   />
@@ -224,6 +227,7 @@ const HealthForm = () => {
                   <Input
                     id="height"
                     type="number"
+                    min={0}
                     {...field}
                     placeholder="Enter water intake in (L/day)"
                   />
