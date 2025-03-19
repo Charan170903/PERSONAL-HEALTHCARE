@@ -15,9 +15,9 @@ export function FormComponent() {
     <div className="container border rounded-md shadow-lg bg-neutral-100 mx-auto py-12 px-4 md:px-6">
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl font-bold">Health & Fitness Tracker</h1>
+          <h1 className="text-3xl font-bold">PC Recommendations</h1>
           <p className="text-muted-foreground">
-            Track your key health metrics and get personalized recommendations.
+            Get your own personalized recommendations.
           </p>
         </div>
 

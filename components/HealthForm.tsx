@@ -116,14 +116,14 @@ const HealthForm = () => {
             name="height"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Height</FormLabel>
+                <FormLabel>Preffered Brand</FormLabel>
                 <FormControl>
                   <Input
                     id="height"
-                    type="number"
+                    type="text"
                     min={0}
                     {...field}
-                    placeholder="Enter your height (cm)"
+                    placeholder="Enter your Preffered Brand"
                   />
                 </FormControl>
                 <FormMessage />
@@ -135,15 +135,21 @@ const HealthForm = () => {
             name="weight"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Weight</FormLabel>
+                <FormLabel>GPU</FormLabel>
                 <FormControl>
-                  <Input
-                    id="height"
-                    type="number"
-                    min={0}
-                    {...field}
-                    placeholder="Enter your weight (kg)"
-                  />
+                <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select CPU" />
+                    </SelectTrigger>
+                    <SelectContent>
+                    <SelectItem value="nvidia">NVIDIA</SelectItem>
+                      <SelectItem value="intel">Intel</SelectItem>
+                      <SelectItem value="amd">AMD</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -154,14 +160,14 @@ const HealthForm = () => {
             name="age"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Age</FormLabel>
+                <FormLabel>RAM</FormLabel>
                 <FormControl>
                   <Input
                     id="height"
                     type="number"
                     min={0}
                     {...field}
-                    placeholder="Enter your age"
+                    placeholder="Enter your RAM capacity"
                   />
                 </FormControl>
                 <FormMessage />
@@ -173,19 +179,18 @@ const HealthForm = () => {
             name="gender"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Gender</FormLabel>
+                <FormLabel>CPU</FormLabel>
                 <FormControl>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select gender" />
+                      <SelectValue placeholder="Select CPU" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="male">Male</SelectItem>
-                      <SelectItem value="female">Female</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="intel">Intel</SelectItem>
+                      <SelectItem value="amd">AMD</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormControl>
@@ -198,20 +203,15 @@ const HealthForm = () => {
             name="activity"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Physical Activity Level</FormLabel>
+                <FormLabel>SSD (in gb)</FormLabel>
                 <FormControl>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select Activity Level" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="daily-active">Daily Active</SelectItem>
-                      <SelectItem value="less-active">Less Active</SelectItem>
-                    </SelectContent>
-                  </Select>
+                <Input
+                    id="height"
+                    type="number"
+                    min={0}
+                    {...field}
+                    placeholder="Enter your SSD"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -222,14 +222,14 @@ const HealthForm = () => {
             name="water"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Daily Water Intake</FormLabel>
+                <FormLabel>HDD (in gb)</FormLabel>
                 <FormControl>
                   <Input
                     id="height"
                     type="number"
                     min={0}
                     {...field}
-                    placeholder="Enter water intake in (L/day)"
+                    placeholder="Enter your HDD"
                   />
                 </FormControl>
                 <FormMessage />
@@ -241,11 +241,10 @@ const HealthForm = () => {
             <div className="flex items-center justify-between">
               {response && (
                 <div>
-                  <h2 className="text-2xl font-bold">Your BMI</h2>
-                  <p className="font-medium">{Number(bmi) > 31 && Number(bmi) < 16  ? bmi?.toFixed(2) : "Your Height and Weight Seems Unusual, Check and enter properly"}</p>
+                  <h1 className="font-bold">Here is your desired RESULTS</h1>
                 </div>
               )}
-              <Button>Check Health Condition</Button>
+              <Button>Start Building</Button>
             </div>
           </div>
         </form>
