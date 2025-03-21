@@ -3,7 +3,12 @@
 import { set, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import Markdown from "react-markdown";
+import dynamic from 'next/dynamic';
+
+const Markdown = dynamic(
+  () => import('react-markdown'),
+  { ssr: false }
+);
 
 import {
   Form,
