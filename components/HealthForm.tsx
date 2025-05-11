@@ -38,6 +38,8 @@ const formSchema = z.object({
 });
 
 const HealthForm = () => {
+  const [result, setResult] = useState<number | null>(null);
+  const [cpuResult, setCpuResult] = useState();
   const [response, setResponse] = useState<string>();
   const [bmi, setBMI] = useState<number>();
 
@@ -54,6 +56,19 @@ const HealthForm = () => {
     },
   });
 
+  const predict = async (result :any) => {
+    const response = await fetch('http://localhost:5000/predict', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(result)
+    });
+    const data = await response.json();
+    setResult(data.cpuMark);
+  };
+
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     setLoading(true);
@@ -69,12 +84,16 @@ const HealthForm = () => {
     })
       .then(async (response) => {
         const botResponse = await response.json();
-        console.log(botResponse);
+        console.log(botResponse.specs);
+        setCpuResult(botResponse.specs)
         setResponse(botResponse.result);
+        console.log(cpuResult)
+        predict(botResponse.specs);
         setBMI(
           Number(values.weight) /
             (((Number(values.height) / 100) * Number(values.height)) / 100)
         );
+
         setLoading(false);
         form.reset();
       })
@@ -242,6 +261,11 @@ const HealthForm = () => {
               {response && (
                 <div>
                   <h1 className="font-bold">Here is your desired RESULTS</h1>
+                  <div className="flex flex-row gap-2 py-4">
+                  <h1 className="font-bold">CPU Benchmark :</h1>
+                  <h1 className="text-black">{result}</h1>
+                  </div>
+
                 </div>
               )}
               <Button>Start Building</Button>
